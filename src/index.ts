@@ -1,11 +1,13 @@
 import app from './app';
-import AppDataSource, { seedDb } from './dataSource';
+import { seedDb, getDataSource } from './dataSource';
 
 const PORT = process.env.PORT || 3000;
 
 (async () => {
   try {
-    await AppDataSource.initialize();
+    const { dataSource } = getDataSource();
+    await dataSource.initialize();
+
     console.log('Database connected');
 
     await seedDb();

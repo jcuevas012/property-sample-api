@@ -18,5 +18,11 @@ export class Property {
   bathrooms: number;
 
   @Column({ type: 'text', nullable: true })
-  type: string | null;
+  type: PropertyType | null;
+}
+
+export enum PropertyType {
+  Condominium,
+  Townhouse,
+  Business,
 }

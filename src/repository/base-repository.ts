@@ -1,13 +1,14 @@
 export default abstract class BaseRepository<T, I> {
-  abstract name: string;
+  abstract identifier: string;
 
   constructor() {
     Object.setPrototypeOf(this, BaseRepository.prototype);
   }
 
-  abstract insert(data: I): T;
-  abstract update(data: I): T;
-  abstract findOne(id: string): T;
-  abstract findAll(options: unknown): T[];
+  abstract insert(data: I): Promise<T>;
+  abstract update(id: number, data: I): Promise<T>;
+  abstract findOne(id: number): Promise<T | null>;
+  abstract delete(id: number): void;
+  abstract findAll(options: unknown): Promise<T[]>;
   abstract getName(): string;
 }
