@@ -132,6 +132,35 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get all Properties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/properties?offset=5&limit=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"properties"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "5"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
