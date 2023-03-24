@@ -2,7 +2,7 @@ import 'express-async-errors';
 import express, { Application } from 'express';
 import { json } from 'body-parser';
 
-import { NotFoundError } from './shared/errorss';
+import { NotFoundError } from './shared/errors';
 import { errorHandler } from './shared/middlewares';
 
 import { usePropertyRoutes } from './routes';
@@ -18,6 +18,7 @@ app.get('/health', (_req, res) => {
 });
 
 const propertyService = new PropertyService(new PropertyRepository());
+
 const propertyRoutes = usePropertyRoutes(propertyService);
 
 app.use('/properties', propertyRoutes());

@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express';
 import { PropertyService } from '../services';
-import { NotFoundError } from '../shared/errorss';
+import { NotFoundError } from '../shared/errors';
 import { requestValidator } from '../shared/middlewares';
 import newPropertyValidator from '../shared/validators/new-property-validator';
+import updatePropertyValidator from '../shared/validators/update-property-validator';
 
 export function usePropertyRoutes(service: PropertyService) {
   return () => {
@@ -45,20 +46,25 @@ export function usePropertyRoutes(service: PropertyService) {
       },
     );
 
-    routes.put('/:id', async (req, res) => {
-      const id = parseInt(req.params.id);
-      const params = req.body;
+    routes.put(
+      '/:id',
+      updatePropertyValidator,
+      requestValidator,
+      async (req: Request, res: Response) => {
+        const id = parseInt(req.params.id);
+        const params = req.body;
 
-      const found = service.findById(id);
+        const found = service.findById(id);
 
-      if (!found) {
-        throw new NotFoundError(`Not property found with provided id`);
-      }
+        if (!found) {
+          throw new NotFoundError(`Not property found with provided id`);
+        }
 
-      await service.update(id, params);
+        await service.update(id, params);
 
-      res.status(204).send();
-    });
+        res.status(204).send();
+      },
+    );
 
     routes.delete('/:id', async (req, res) => {
       const id = parseInt(req.params.id);
