@@ -1,10 +1,13 @@
 import request from 'supertest';
 import app from '../../app';
-import AppDataSource, { seedDb } from '../../dataSource';
+import { seedDb, getDataSource } from '../../dataSource';
 
 describe('propertyRoutes', () => {
   beforeAll(async () => {
-    await AppDataSource.initialize();
+    const { dataSource } = getDataSource();
+    await dataSource.initialize();
+
+    await dataSource.initialize();
     await seedDb();
   });
 
