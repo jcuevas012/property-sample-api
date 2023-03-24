@@ -9,6 +9,10 @@ const app: Application = express();
 
 app.use(json());
 
+app.get('/health', (_req, res) => {
+  res.status(200).send({ success: true });
+});
+
 app.use('/properties', propertyRoutes);
 
 app.all('*', () => {

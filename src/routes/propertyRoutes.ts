@@ -1,9 +1,11 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+import { PropertyService } from '../services';
+import { PropertyRepository } from '../repository/property-reposity';
+
+const dataSource = new PropertyRepository();
+const service = new PropertyService(dataSource);
 
 export const propertyRoutes = express.Router();
-
-propertyRoutes.use(bodyParser.json());
 
 propertyRoutes.get('/', async (req, res) => {
   res.send('GET all properties');
