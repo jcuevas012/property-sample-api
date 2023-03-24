@@ -1,2 +1,2 @@
-export { requestValidator } from './request-validator'
-export {  errorHandler } from './error-handler'
+export { requestValidator } from './request-validator';
+export { errorHandler } from './error-handler';
