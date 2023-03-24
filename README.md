@@ -7,6 +7,19 @@ This is a small project which looking to implement some of the best practices th
 
 Note: Some points are just recommendations for scaling and were not implemented here because of the time available. those are going to be marked with `*`
 
+# How to run
+
+`npm intall`
+
+In order to run it locally in development mode
+`npm run dev`
+
+
+Runing Test
+`npm run test`
+
+- Pick `Properties Postman Collection.postman_collection` and import it in Postman
+
 # Error Handler.
 
 - For this case write out a simple error handler system base on classes, where and relaying on express `express-async-errors` so that I can throw errors direct from controllers using async/await when is needed
